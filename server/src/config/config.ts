@@ -41,7 +41,7 @@ export default {
   /*
    * 데이터베이스 이름
    */
-  databaseName: env.DATABASE,
+  databaseName: env.DATABASE_DEV,
 
   /*
    * 데이터베이스 종류
@@ -53,15 +53,39 @@ export default {
    */
   cookieSecret: env.COOKIE_SECRET,
 
+  development: {
+    databaseUser: env.DB_USERNAME,
+    databasePassword: env.DB_PASSWORD,
+    databaseName: env.DATABASE_DEV,
+    databaseURL: env.DB_URI,
+    databaseDialect: env.DIALECT,
+  },
+
+  test: {
+    databaseUser: env.DB_USERNAME,
+    databasePassword: env.DB_PASSWORD,
+    databaseName: env.DATABASE_TEST,
+    databaseURL: env.DB_URI,
+    databaseDialect: env.DIALECT,
+  },
+
+  production: {
+    databaseUser: env.DB_USERNAME,
+    databasePassword: env.DB_PASSWORD,
+    databaseName: env.DATABASE_PRODUCTION,
+    databaseURL: env.DB_URI,
+    databaseDialect: env.DIALECT,
+  },
+
   /*
    * 세션 옵션
    */
-  sessionOptions: {
+  expressSession: {
     host: env.DB_URI,
     port: env.DB_PORT,
     user: env.DB_USERNAME,
     password: env.DB_PASSWORD,
-    database: env.DATABASE,
+    database: env.DATABASE_DEV,
   },
 
   /*

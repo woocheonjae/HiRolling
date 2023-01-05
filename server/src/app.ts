@@ -1,7 +1,8 @@
-import config from "./config/config.js";
-import expressApp from "./loaders/index.js";
-import Logger from "./loaders/logger.js";
 import express from "express";
+import "reflect-metadata";
+
+import config from "./config/config";
+import Logger from "./loaders/logger";
 
 /*
  * 서버 설정
@@ -9,13 +10,15 @@ import express from "express";
 async function startServer() {
   const app = express();
 
-  await expressApp(app);
+  // ?: 이해 못 함
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  await require("./loaders").default({ expressApp: app });
 
   app
     .listen(config.port, () => {
       Logger.info(`
       ################################################
-      📡 Server listening on port: ${app.get("port")} 📡
+      📡 Server listening on port: ${config.port} 📡
       ################################################
     `);
     })
